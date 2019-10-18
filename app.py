@@ -47,6 +47,16 @@ def get_by_id(id_):
         return jsonify(book.serialize())
     except Exception as e:
 	    return(str(e))
+ 
+@app.route("/name/<name_>")
+def get_by_name(name_):
+    try:
+        book=Book.query.filter_by(name=name_).first()
+        return jsonify(book.serialize())
+    except Exception as e:
+	    return(str(e))
+ 
+
 
 if __name__ == '__main__':
     app.run()
